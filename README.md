@@ -1,4 +1,4 @@
-# Medicion-de-Captacion-de-Agua
+# Medidor-de-Captacion-de-Agua
 
 ## INTRODUCCIÓN
 
