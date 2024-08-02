@@ -44,6 +44,12 @@ Para la elaboración de los dispositvos de sensado se necesiataran los siguiente
 8. CONVERTIDOR FTDI A SERIAL
 9. CABLE MINI-USB A USB.
 
+## DIAGRAMA ELECTRONICO
+![diagrama nivel](https://github.com/user-attachments/assets/11c0fd2c-32ce-47c6-8ebb-26f64e1109ab)
+
+## DIAGRAMA DE FLUJO
+![image](https://github.com/user-attachments/assets/f6a2f166-2cd8-4797-8667-fcaaf6fc102c)
+
 ## SERVICIOS
 El producto a entregar en este proyecto es una plataforma web de monitoreo y control de medidores de captación de agua. Esta plataforma permitirá a los usuarios realizar un seguimiento en tiempo real del consumo de agua y gestionar el uso del recurso hídrico de manera eficiente.
 
