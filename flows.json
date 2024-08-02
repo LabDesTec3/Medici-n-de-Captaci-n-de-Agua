@@ -1,0 +1,474 @@
+[
+    {
+        "id": "37af2232f42aeec0",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7e1e5867b25480c7",
+        "type": "function",
+        "z": "37af2232f42aeec0",
+        "name": "Extraer Nivel 1",
+        "func": "msg.payload=msg.payload.niv1;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e1f4bffeb94201e4",
+        "type": "function",
+        "z": "37af2232f42aeec0",
+        "name": "Extraer Nivel 2",
+        "func": "msg.payload=msg.payload.niv2;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d1635cc243fb3d74",
+        "type": "function",
+        "z": "37af2232f42aeec0",
+        "name": "TINACO 1 ",
+        "func": "//INSERT INTO TINACO_1 (nivel) VALUES (25);\n//generar inicio del query \nmsg.topic =\"INSERT INTO TINACO_1 (nivel) VALUES (\";\n//CONCATENAR NIVEL\nmsg.topic += msg.payload.niv1 + \");\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 460,
+        "wires": [
+            [
+                "0eab6de315123ffc"
+            ]
+        ]
+    },
+    {
+        "id": "a4c17878888c755f",
+        "type": "function",
+        "z": "37af2232f42aeec0",
+        "name": "Extraer flujo ",
+        "func": "msg.payload=msg.payload.flu;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "694c22fce9491feb",
+        "type": "mqtt in",
+        "z": "37af2232f42aeec0",
+        "name": "",
+        "topic": "10023695",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "cde2b9aa7f7e1be1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 480,
+        "wires": [
+            [
+                "7e1e5867b25480c7",
+                "d1635cc243fb3d74"
+            ]
+        ]
+    },
+    {
+        "id": "0eab6de315123ffc",
+        "type": "mysql",
+        "z": "37af2232f42aeec0",
+        "mydb": "27e2213207fb6301",
+        "name": "",
+        "x": 730,
+        "y": 500,
+        "wires": [
+            [
+                "008c65284747e8b8"
+            ]
+        ]
+    },
+    {
+        "id": "935f6b48e1ec3a77",
+        "type": "mqtt in",
+        "z": "37af2232f42aeec0",
+        "name": "",
+        "topic": "100236950",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "9c0ed33ac6aef07c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 540,
+        "wires": [
+            [
+                "e1f4bffeb94201e4",
+                "a4c17878888c755f",
+                "381d12dc3fb30715"
+            ]
+        ]
+    },
+    {
+        "id": "008c65284747e8b8",
+        "type": "debug",
+        "z": "37af2232f42aeec0",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "5c915aeb0d72d9b3",
+        "type": "mysql",
+        "z": "37af2232f42aeec0",
+        "mydb": "27e2213207fb6301",
+        "name": "",
+        "x": 650,
+        "y": 640,
+        "wires": [
+            [
+                "3da9626e9a120375"
+            ]
+        ]
+    },
+    {
+        "id": "3da9626e9a120375",
+        "type": "debug",
+        "z": "37af2232f42aeec0",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "381d12dc3fb30715",
+        "type": "function",
+        "z": "37af2232f42aeec0",
+        "name": "TINACO 2",
+        "func": "//INSERT INTO TINACO_2 (nivel,flujo) VALUES (25, 50.53);\n//generar inicio del query \nmsg.topic =\"INSERT INTO TINACO_2 (nivel,flujo) VALUES (\";\n//CONCATENAR NIVEL\nmsg.topic += msg.payload.niv2 + \",\";\n//concatenar FLUJO\nmsg.topic += msg.payload.flu + \");\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 660,
+        "wires": [
+            [
+                "5c915aeb0d72d9b3"
+            ]
+        ]
+    },
+    {
+        "id": "577ce0072ce5198b",
+        "type": "mqtt in",
+        "z": "37af2232f42aeec0",
+        "name": "",
+        "topic": "10023695",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "cde2b9aa7f7e1be1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "bfa8a4cc5c9ef645"
+            ]
+        ]
+    },
+    {
+        "id": "bfa8a4cc5c9ef645",
+        "type": "ui_gauge",
+        "z": "37af2232f42aeec0",
+        "name": "",
+        "group": "b692fcd5b14d8f08",
+        "order": 1,
+        "width": 6,
+        "height": 5,
+        "gtype": "wave",
+        "title": "Capacidad Tinaco1",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 590,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "873d6237a62c188f",
+        "type": "ui_gauge",
+        "z": "37af2232f42aeec0",
+        "name": "",
+        "group": "b692fcd5b14d8f08",
+        "order": 4,
+        "width": 6,
+        "height": 5,
+        "gtype": "wave",
+        "title": "Capacidad Tinaco2",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 590,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "fdb4e8a901d79ae7",
+        "type": "mqtt in",
+        "z": "37af2232f42aeec0",
+        "name": "",
+        "topic": "100236950",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "cde2b9aa7f7e1be1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 260,
+        "wires": [
+            [
+                "873d6237a62c188f"
+            ]
+        ]
+    },
+    {
+        "id": "c748e647e8671ee3",
+        "type": "ui_gauge",
+        "z": "37af2232f42aeec0",
+        "name": "",
+        "group": "b692fcd5b14d8f08",
+        "order": 2,
+        "width": 6,
+        "height": 5,
+        "gtype": "gage",
+        "title": "Velocidad de Captación de Agua",
+        "label": "L/min",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 630,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5774d2e4b2d096ee",
+        "type": "mqtt in",
+        "z": "37af2232f42aeec0",
+        "name": "",
+        "topic": "10023695",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "cde2b9aa7f7e1be1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 320,
+        "wires": [
+            [
+                "c748e647e8671ee3"
+            ]
+        ]
+    },
+    {
+        "id": "b5813c87b92068fc",
+        "type": "ui_spacer",
+        "z": "37af2232f42aeec0",
+        "name": "spacer",
+        "group": "b692fcd5b14d8f08",
+        "order": 5,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "d7bea60a19ddf731",
+        "type": "ui_spacer",
+        "z": "37af2232f42aeec0",
+        "name": "spacer",
+        "group": "b692fcd5b14d8f08",
+        "order": 6,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "c4111078b440205c",
+        "type": "ui_spacer",
+        "z": "37af2232f42aeec0",
+        "name": "spacer",
+        "group": "b692fcd5b14d8f08",
+        "order": 7,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "cde2b9aa7f7e1be1",
+        "type": "mqtt-broker",
+        "name": "hivemq.com",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "27e2213207fb6301",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "MCA",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "9c0ed33ac6aef07c",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "b692fcd5b14d8f08",
+        "type": "ui_group",
+        "name": "Captacion de agua Pluvial",
+        "tab": "eaee9e3a99500b9a",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "eaee9e3a99500b9a",
+        "type": "ui_tab",
+        "name": "Sistema de Monitoreo de Captación de Agua",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
