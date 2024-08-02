@@ -50,6 +50,9 @@ Para la elaboración de los dispositvos de sensado se necesiataran los siguiente
 ## DIAGRAMA DE FLUJO
 ![image](https://github.com/user-attachments/assets/f6a2f166-2cd8-4797-8667-fcaaf6fc102c)
 
+![image](https://github.com/user-attachments/assets/57d71172-e528-4286-b3ed-9eb3f4cbee97)
+
+
 ## SERVICIOS
 El producto a entregar en este proyecto es una plataforma web de monitoreo y control de medidores de captación de agua. Esta plataforma permitirá a los usuarios realizar un seguimiento en tiempo real del consumo de agua y gestionar el uso del recurso hídrico de manera eficiente.
 
