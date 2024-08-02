@@ -52,6 +52,9 @@ Para la elaboración de los dispositvos de sensado se necesiataran los siguiente
 
 ![image](https://github.com/user-attachments/assets/57d71172-e528-4286-b3ed-9eb3f4cbee97)
 
+![image](https://github.com/user-attachments/assets/5ea6f0b8-ede6-43e3-9c84-e0c9377a0d28)
+
+
 
 ## SERVICIOS
 El producto a entregar en este proyecto es una plataforma web de monitoreo y control de medidores de captación de agua. Esta plataforma permitirá a los usuarios realizar un seguimiento en tiempo real del consumo de agua y gestionar el uso del recurso hídrico de manera eficiente.
